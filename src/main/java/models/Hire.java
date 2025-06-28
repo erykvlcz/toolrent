@@ -3,16 +3,22 @@ package models;
 import java.time.LocalDateTime;
 
 public class Hire {
+    private final int hireId;
     private final Tool tool;
     private final LocalDateTime sinceRent;
     private final LocalDateTime untilRent;
     private final Client client;
 
-    public Hire(Tool tool, Client client, LocalDateTime untilRent, LocalDateTime sinceRent) {
+    public Hire(int hireId, Tool tool, LocalDateTime sinceRent, LocalDateTime untilRent, Client client) {
+        this.hireId = hireId;
         this.tool = tool;
-        this.client = client;
-        this.untilRent = LocalDateTime.now();
         this.sinceRent = sinceRent;
+        this.untilRent = untilRent;
+        this.client = client;
+    }
+
+    public int getHireId() {
+        return hireId;
     }
 
     public Tool getTool() {
@@ -29,6 +35,15 @@ public class Hire {
 
     public Client getClient() {
         return client;
+    }
+
+
+
+    public String hireTXT(){
+        return tool +
+                "," + sinceRent +
+                "," + untilRent +
+                "," + client;
     }
 
     @Override

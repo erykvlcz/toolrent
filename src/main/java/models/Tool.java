@@ -3,19 +3,22 @@ package models;
 import java.time.LocalDateTime;
 
 public class Tool {
-    String name;
-    TypeTool typeTool;
-    RentStatus rentStatus = RentStatus.AVAILABLE;
+    private String name;
+    private TypeTool typeTool;
+    private RentStatus rentStatus = RentStatus.AVAILABLE;
+    private double pricePer1Day;
 
-    public Tool(String name, TypeTool typeTool) {
+    public Tool(String name, TypeTool typeTool, double pricePer1Day) {
         this.name = name;
         this.typeTool = typeTool;
+        this.pricePer1Day = pricePer1Day;
     }
 
-    public Tool(String name, TypeTool typeTool, RentStatus rentStatus) {
+    public Tool(String name, TypeTool typeTool, RentStatus rentStatus, double pricePer1Day) {
         this.name = name;
         this.typeTool = typeTool;
         this.rentStatus = rentStatus;
+        this.pricePer1Day = pricePer1Day;
     }
 
     public String getName() {
@@ -40,6 +43,16 @@ public class Tool {
 
     public void setRentStatus(RentStatus rentStatus) {
         this.rentStatus = rentStatus;
+    }
+
+    public String toolTXT(){
+        return name + "," +
+                typeTool + "," +
+                rentStatus;
+    }
+
+    public double getPricePer1Day() {
+        return pricePer1Day;
     }
 
     @Override
